@@ -1,0 +1,14 @@
+FROM quay.io/fedora/fedora-toolbox:latest
+
+LABEL com.github.containers.toolbox="true" \
+      summary="Base Fedora toolbox with multimedia codecs and Firefox Beta." \
+      usage="This is meant to be used with the distrobox or toolbox create command" \
+      maintainer="ryanwalker8484@pm.me"
+
+COPY ../scripts/firefox-beta.sh /
+COPY ../scripts/distrobox.sh /
+COPY ../scripts/rpmfusion.sh /
+COPY ../packages/firefox-beta.txt /
+
+RUN chmod +x firefox-beta.sh distrobox.sh rpmfusion.sh && /firefox-beta.sh
+RUN rm /firefox-beta.sh /firefox-beta.txt /distrobox.sh /rpmfusion.sh
