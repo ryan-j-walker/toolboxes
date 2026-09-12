@@ -1,0 +1,13 @@
+FROM quay.io/fedora/fedora-toolbox:latest
+
+LABEL com.github.containers.toolbox="true" \
+      summary="Base Fedora toolbox with Proton Mail and Proton Pass." \
+      usage="This is meant to be used with the distrobox or toolbox create command" \
+      maintainer="ryanwalker8484@pm.me"
+
+COPY ../scripts/proton-apps.sh /
+COPY ../scripts/distrobox.sh /
+COPY ../packages/proton-apps.txt /
+
+RUN chmod +x proton-apps.sh distrobox.sh && /proton-apps.sh
+RUN rm /proton-apps.sh /distrobox.sh /proton-apps.txt

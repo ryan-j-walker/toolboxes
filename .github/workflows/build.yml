@@ -15,7 +15,7 @@ on:
     paths-ignore: # don't rebuild if only documentation has changed
       - '**.md'
   schedule:
-    - cron: '00 03 * * TUE'
+    - cron: '00 04 * * TUE'
   workflow_dispatch: # allow manually triggering builds
 
 concurrency:
@@ -41,6 +41,7 @@ jobs:
       matrix:
         containerfile:
           - firefox-beta
+          - proton-apps
 
     steps:
       # Clone code to runner
